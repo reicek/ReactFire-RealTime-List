@@ -1,4 +1,4 @@
-# ReactJS - Simple List Generator
-Simple List to demonstrate the use of ReactJS
+# ReactJS - Simple List Filter
+Simple List Filter to demonstrate the use of ReactJS
 
-<a href='http://goo.gl/3BahiG' target="_blank">Demo</a>
+<a href='' target="_blank">Demo</a>
