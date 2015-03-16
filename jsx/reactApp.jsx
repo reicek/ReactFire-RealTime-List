@@ -68,9 +68,7 @@ var SimpleListRow = React.createClass({
 			<ol>
 				{rows.map(function(element) 
 					{if (element.row.toLowerCase().search(userInput.toLowerCase()) > -1){
-						console.log('_________________');
-						console.log("userInput fount in simpleList row")
-						console.log(element.row);
+						console.log("userInput found in simpleList row: "+element.row);
 						return (
 							<li>{element.row}</li>
 						);
