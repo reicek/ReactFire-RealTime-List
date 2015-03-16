@@ -1,0 +1,24 @@
+{
+  "name": "SimpleListFilter - ReactJS",
+  "version": "0.0.1",
+  "homepage": "https://github.com/reicek/ReactJS-SimpleListFilter",
+  "authors": [
+    "reicek <reicek@gmail.com>"
+  ],
+  "description": "Simple ReactJS filter list",
+  "main": "SimpleListFilter",
+  "moduleType": [
+    "es6"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "~0.13.0"
+  }
+}
