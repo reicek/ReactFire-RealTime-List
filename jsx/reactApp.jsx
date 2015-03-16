@@ -1,21 +1,24 @@
 "use strict"
 
 var SimpleFilterableList	= React.createClass({
+	getInitialState: function() {
+        return {
+			userInput: ""
+        };
+    },
+	filterList: function(input){
+		console.log('_________________');
+		console.log('User search input:');
+		console.log(input.target.value);
+		this.setState({userInput: input.target.value});
+	},
 	render: function(){
-        return (
+		return (
 			<div>
-				<SimpleListFilter />
-				<SimpleList url={this.props.url} />
+				<input type='text' placeholder='Filtrar...' onChange={this.filterList}></input>
+				<SimpleList url={this.props.url} userInput={this.state.userInput}/>
 			</div>
-        );
-	}
-});
-
-var SimpleListFilter		= React.createClass({
-	render: function(){
-        return (
-			<input type="text" placeholder="Filtrar..." />
-        );
+		);
 	}
 });
 
@@ -48,7 +51,7 @@ var SimpleList = React.createClass({
 		return (
 			<span>
 				<p><strong>Pasos para dominar un nuevo lenguaje de programación:</strong></p>
-				<SimpleListRow simpleList={this.state.simpleList}/>
+				<SimpleListRow simpleList={this.state.simpleList} userInput={this.props.userInput}/>
 			</span>
 		);
 	}	
@@ -57,15 +60,21 @@ var SimpleList = React.createClass({
 var SimpleListRow = React.createClass({
 	render: function() {
 		console.log('_________________');
-		console.log('simpleList rows data:');
+		console.log('simpleList rows props:');
 		console.log(this.props);
 		var rows = this.props.simpleList;
+		var userInput = this.props.userInput;
 		return (
 			<ol>
-				{rows.map(function(element) {
-					return (
-						<li>{element.row}</li>
-					);
+				{rows.map(function(element) 
+					{if (element.row.toLowerCase().search(userInput.toLowerCase()) > -1){
+						console.log('_________________');
+						console.log("userInput fount in simpleList row")
+						console.log(element.row);
+						return (
+							<li>{element.row}</li>
+						);
+					};
 				})}
 			</ol>
 		);
@@ -73,6 +82,6 @@ var SimpleListRow = React.createClass({
 });
 
 React.render(
-	<SimpleFilterableList url="simpleList_data.json"/>,
+	<SimpleFilterableList url='simpleList_data.json'/>,
 	document.getElementById('simpleList')
 )

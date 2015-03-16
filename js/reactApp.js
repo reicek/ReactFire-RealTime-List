@@ -1,21 +1,24 @@
 "use strict"
 
 var SimpleFilterableList	= React.createClass({displayName: "SimpleFilterableList",
+	getInitialState: function() {
+        return {
+			userInput: ""
+        };
+    },
+	filterList: function(input){
+		console.log('_________________');
+		console.log('User search input:');
+		console.log(input.target.value);
+		this.setState({userInput: input.target.value});
+	},
 	render: function(){
-        return (
+		return (
 			React.createElement("div", null, 
-				React.createElement(SimpleListFilter, null), 
-				React.createElement(SimpleList, {url: this.props.url})
+				React.createElement("input", {type: "text", placeholder: "Filtrar...", onChange: this.filterList}), 
+				React.createElement(SimpleList, {url: this.props.url, userInput: this.state.userInput})
 			)
-        );
-	}
-});
-
-var SimpleListFilter		= React.createClass({displayName: "SimpleListFilter",
-	render: function(){
-        return (
-			React.createElement("input", {type: "text", placeholder: "Filtrar..."})
-        );
+		);
 	}
 });
 
@@ -48,7 +51,7 @@ var SimpleList = React.createClass({displayName: "SimpleList",
 		return (
 			React.createElement("span", null, 
 				React.createElement("p", null, React.createElement("strong", null, "Pasos para dominar un nuevo lenguaje de programación:")), 
-				React.createElement(SimpleListRow, {simpleList: this.state.simpleList})
+				React.createElement(SimpleListRow, {simpleList: this.state.simpleList, userInput: this.props.userInput})
 			)
 		);
 	}	
@@ -57,15 +60,21 @@ var SimpleList = React.createClass({displayName: "SimpleList",
 var SimpleListRow = React.createClass({displayName: "SimpleListRow",
 	render: function() {
 		console.log('_________________');
-		console.log('simpleList rows data:');
+		console.log('simpleList rows props:');
 		console.log(this.props);
 		var rows = this.props.simpleList;
+		var userInput = this.props.userInput;
 		return (
 			React.createElement("ol", null, 
-				rows.map(function(element) {
-					return (
-						React.createElement("li", null, element.row)
-					);
+				rows.map(function(element) 
+					{if (element.row.toLowerCase().search(userInput.toLowerCase()) > -1){
+						console.log('_________________');
+						console.log("userInput fount in simpleList row")
+						console.log(element.row);
+						return (
+							React.createElement("li", null, element.row)
+						);
+					};
 				})
 			)
 		);
