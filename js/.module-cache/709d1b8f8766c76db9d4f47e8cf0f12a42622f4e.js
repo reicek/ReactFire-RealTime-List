@@ -1,24 +1,5 @@
 "use strict"
 
-var SimpleFilterableList	= React.createClass({displayName: "SimpleFilterableList",
-	render: function(){
-        return (
-			React.createElement("div", null, 
-				React.createElement(SimpleListFilter, null), 
-				React.createElement(SimpleList, {url: this.props.url})
-			)
-        );
-	}
-});
-
-var SimpleListFilter		= React.createClass({displayName: "SimpleListFilter",
-	render: function(){
-        return (
-			React.createElement("input", {type: "text", placeholder: "Filtrar..."})
-        );
-	}
-});
-
 var SimpleList = React.createClass({displayName: "SimpleList",
 	getInitialState: function() {
         return {
@@ -72,7 +53,18 @@ var SimpleListRow = React.createClass({displayName: "SimpleListRow",
 	}	
 });
 
+var simpleFilterableList	= React.createClass({displayName: "simpleFilterableList",
+	render: function(){
+        return (
+			React.createElement("div", null, 
+				React.createElement(SimpleListFilter, null), 
+				React.createElement(SimpleList, {url: "simpleList_data.json"})
+			)
+        );
+	}
+});
+
 React.render(
-	React.createElement(SimpleFilterableList, {url: "simpleList_data.json"}),
+	React.createElement(SimpleList, {url: "simpleList_data.json"}),
 	document.getElementById('simpleList')
 )

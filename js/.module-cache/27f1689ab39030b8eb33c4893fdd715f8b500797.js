@@ -1,25 +1,25 @@
 "use strict"
 
-var SimpleFilterableList	= React.createClass({
+var simpleFilterableList	= React.createClass({displayName: "simpleFilterableList",
 	render: function(){
         return (
-			<div>
-				<SimpleListFilter />
-				<SimpleList url={this.props.url} />
-			</div>
+			React.createElement("div", null, 
+				React.createElement(SimpleListFilter, null), 
+				React.createElement(SimpleList, {url: "simpleList_data.json"})
+			)
         );
 	}
 });
 
-var SimpleListFilter		= React.createClass({
+var SimpleListFilter		= React.createClass({displayName: "SimpleListFilter",
 	render: function(){
         return (
-			<input type="text" placeholder="Filtrar..." />
+			React.createElement("input", {type: "text", placeholder: "Filtrar..."})
         );
 	}
 });
 
-var SimpleList = React.createClass({
+var SimpleList				= React.createClass({displayName: "SimpleList",
 	getInitialState: function() {
         return {
 			simpleList: [
@@ -46,33 +46,33 @@ var SimpleList = React.createClass({
 	},
 	render: function() {
 		return (
-			<span>
-				<p><strong>Pasos para dominar un nuevo lenguaje de programación:</strong></p>
-				<SimpleListRow simpleList={this.state.simpleList}/>
-			</span>
+			React.createElement("div", null, 
+				React.createElement("p", null, React.createElement("strong", null, "Pasos para dominar un nuevo lenguaje de programación:")), 
+				React.createElement(SimpleListRow, {simpleList: this.state.simpleList})
+			)
 		);
 	}	
 });
 
-var SimpleListRow = React.createClass({
+var SimpleListRow			= React.createClass({displayName: "SimpleListRow",
 	render: function() {
 		console.log('_________________');
 		console.log('simpleList rows data:');
 		console.log(this.props);
 		var rows = this.props.simpleList;
 		return (
-			<ol>
-				{rows.map(function(element) {
+			React.createElement("ol", null, 
+				rows.map(function(element) {
 					return (
-						<li>{element.row}</li>
+						React.createElement("li", null, element.row)
 					);
-				})}
-			</ol>
+				})
+			)
 		);
 	}	
 });
 
 React.render(
-	<SimpleFilterableList url="simpleList_data.json"/>,
+	React.createElement("simpleFilterableList", null),
 	document.getElementById('simpleList')
 )

@@ -1,11 +1,9 @@
-"use strict"
-
 var SimpleFilterableList	= React.createClass({displayName: "SimpleFilterableList",
 	render: function(){
         return (
 			React.createElement("div", null, 
 				React.createElement(SimpleListFilter, null), 
-				React.createElement(SimpleList, {url: this.props.url})
+				React.createElement(SimpleList, {url: "simpleList_data.json"})
 			)
         );
 	}
@@ -73,6 +71,6 @@ var SimpleListRow = React.createClass({displayName: "SimpleListRow",
 });
 
 React.render(
-	React.createElement(SimpleFilterableList, {url: "simpleList_data.json"}),
+	React.createElement(SimpleFilterableList, null),
 	document.getElementById('simpleList')
 )

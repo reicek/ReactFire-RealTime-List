@@ -1,11 +1,11 @@
 "use strict"
 
-var SimpleFilterableList	= React.createClass({displayName: "SimpleFilterableList",
+var simpleFilterableList	= React.createClass({displayName: "simpleFilterableList",
 	render: function(){
         return (
 			React.createElement("div", null, 
-				React.createElement(SimpleListFilter, null), 
-				React.createElement(SimpleList, {url: this.props.url})
+				React.createElement(SimpleListFilter, null), ",", 
+				React.createElement(SimpleList, {url: "simpleList_data.json"})
 			)
         );
 	}
@@ -19,7 +19,7 @@ var SimpleListFilter		= React.createClass({displayName: "SimpleListFilter",
 	}
 });
 
-var SimpleList = React.createClass({displayName: "SimpleList",
+var SimpleList				= React.createClass({displayName: "SimpleList",
 	getInitialState: function() {
         return {
 			simpleList: [
@@ -46,7 +46,7 @@ var SimpleList = React.createClass({displayName: "SimpleList",
 	},
 	render: function() {
 		return (
-			React.createElement("span", null, 
+			React.createElement("div", null, 
 				React.createElement("p", null, React.createElement("strong", null, "Pasos para dominar un nuevo lenguaje de programación:")), 
 				React.createElement(SimpleListRow, {simpleList: this.state.simpleList})
 			)
@@ -54,7 +54,7 @@ var SimpleList = React.createClass({displayName: "SimpleList",
 	}	
 });
 
-var SimpleListRow = React.createClass({displayName: "SimpleListRow",
+var SimpleListRow			= React.createClass({displayName: "SimpleListRow",
 	render: function() {
 		console.log('_________________');
 		console.log('simpleList rows data:');
@@ -73,6 +73,6 @@ var SimpleListRow = React.createClass({displayName: "SimpleListRow",
 });
 
 React.render(
-	React.createElement(SimpleFilterableList, {url: "simpleList_data.json"}),
+	React.createElement("simpleFilterableList", null),
 	document.getElementById('simpleList')
 )

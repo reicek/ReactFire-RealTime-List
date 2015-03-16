@@ -3,10 +3,8 @@
 var SimpleFilterableList	= React.createClass({displayName: "SimpleFilterableList",
 	render: function(){
         return (
-			React.createElement("div", null, 
-				React.createElement(SimpleListFilter, null), 
-				React.createElement(SimpleList, {url: this.props.url})
-			)
+			React.createElement(SimpleListFilter, null),
+			React.createElement(SimpleList, {url: "simpleList_data.json"})
         );
 	}
 });
@@ -14,7 +12,8 @@ var SimpleFilterableList	= React.createClass({displayName: "SimpleFilterableList
 var SimpleListFilter		= React.createClass({displayName: "SimpleListFilter",
 	render: function(){
         return (
-			React.createElement("input", {type: "text", placeholder: "Filtrar..."})
+			React.createElement("h3", null, "Buscar"),
+			React.createElement("input", {type: "text", placeholder: "..."})
         );
 	}
 });
@@ -73,6 +72,7 @@ var SimpleListRow = React.createClass({displayName: "SimpleListRow",
 });
 
 React.render(
-	React.createElement(SimpleFilterableList, {url: "simpleList_data.json"}),
+	React.createElement(SimpleListFilter, null),
+	React.createElement(SimpleList, {url: "simpleList_data.json"}),
 	document.getElementById('simpleList')
 )
