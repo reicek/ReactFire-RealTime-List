@@ -1,4 +1,4 @@
-# ReactJS - Simple List Filter
-Simple List Filter to demonstrate the use of ReactJS
+# Firebase & ReactJS  - Real Time List
+Real Time List to demonstrate the use of Firebase & ReactJS 
 
-<a href='http://goo.gl/rR965d' target="_blank">Demo</a>
+<a href='' target="_blank">Demo</a>
