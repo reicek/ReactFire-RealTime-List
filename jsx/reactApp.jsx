@@ -6,7 +6,7 @@ var SimpleFilterableList	= React.createClass({
 			userInput: ""
         };
     },
-	filterList: function(input){
+	updateUserInput: function(input){
 		console.log('_________________');
 		console.log('User search input:');
 		console.log(input.target.value);
@@ -15,7 +15,7 @@ var SimpleFilterableList	= React.createClass({
 	render: function(){
 		return (
 			<div>
-				<input type='text' placeholder='Filtrar...' onChange={this.filterList}></input>
+				<input type='text' placeholder='Filtrar...' onChange={this.updateUserInput}></input>
 				<SimpleList url={this.props.url} userInput={this.state.userInput}/>
 			</div>
 		);

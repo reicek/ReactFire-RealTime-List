@@ -6,7 +6,7 @@ var SimpleFilterableList	= React.createClass({displayName: "SimpleFilterableList
 			userInput: ""
         };
     },
-	filterList: function(input){
+	updateUserInput: function(input){
 		console.log('_________________');
 		console.log('User search input:');
 		console.log(input.target.value);
@@ -15,7 +15,7 @@ var SimpleFilterableList	= React.createClass({displayName: "SimpleFilterableList
 	render: function(){
 		return (
 			React.createElement("div", null, 
-				React.createElement("input", {type: "text", placeholder: "Filtrar...", onChange: this.filterList}), 
+				React.createElement("input", {type: "text", placeholder: "Filtrar...", onChange: this.updateUserInput}), 
 				React.createElement(SimpleList, {url: this.props.url, userInput: this.state.userInput})
 			)
 		);
