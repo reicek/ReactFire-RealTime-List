@@ -1,4 +1,4 @@
 # Firebase & ReactJS  - Real Time List
-Real Time List to demonstrate the use of Firebase & ReactJS 
+###### by César Antón Dorantes <a href="https://twitter.com/reicek">@reicek</a>
 
 <a href='https://platzi-realtimelist.firebaseapp.com/' target="_blank">Demo</a>
